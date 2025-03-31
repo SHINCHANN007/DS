@@ -1,3 +1,6 @@
+Q)Time Series Forecasting 
+
+
 View(AirPassengers) 
 class(AirPassengers)  # Shows it's a time series object (ts)
 str(AirPassengers)    # Structure of the data
