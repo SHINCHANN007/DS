@@ -1,0 +1,135 @@
+Q 1)
+
+# Load dataset from CSV file
+loan <- read.csv(file.choose(), header = TRUE, sep = ",")
+
+# Examine data structure
+head(loan)       # First 6 rows
+summary(loan)    # Statistical summary
+str(loan)        # Variable types and structure
+
+# Convert AGE to categorical if needed
+loan$AGE <- as.factor(loan$AGE)
+str(loan)        # Verify conversion
+names(loan)      # List all variables
+
+# Full logistic regression model
+model1 <- glm(DEFAULTER ~ ., family = binomial, data = loan)
+summary(model1)
+# Null model (intercept only)
+null <- glm(DEFAULTER ~ 1, family = binomial, data = loan)
+
+# Likelihood ratio test
+anova(null, model1, test = "Chisq")
+
+# Add predicted probabilities to dataset
+loan$predprob <- round(fitted(model1), 2)
+head(loan)      # View predictions
+
+# Prepare for ROC analysis
+pred <- predict(model1, loan, type = "response")
+loan$DEFAULTER <- as.numeric(as.factor(loan$DEFAULTER)) - 1  # Convert to 0/1
+
+# ROC Curve components
+library(ROCR)
+rocrpred <- prediction(pred, loan$DEFAULTER)
+rocrperf <- performance(rocrpred, "tpr", "fpr")
+
+# Plot ROC curve
+plot(rocrperf, colorize = TRUE, 
+     print.cutoffs.at = seq(0.1, 1, by = 0.1))
+
+# Calculate AUC
+auc <- performance(rocrpred, "auc")@y.values[[1]]
+print(auc)
+
+# Log-odds coefficients
+print(coef(model1))
+
+# Odds ratios (more interpretable)
+print(exp(coef(model1)))
+-----------------------------------------------------------------------------
+
+Q 2) 
+
+# Install and load required packages
+#install.packages("dplyr")
+#install.packages("caTools")
+#install.packages("ROCR")
+library(dplyr)
+library(caTools)
+library(ROCR)
+
+# Examine the dataset
+summary(mtcars)
+
+# Split data into training (80%) and testing (20%) sets
+set.seed(123) # For reproducibility
+split <- sample.split(mtcars$vs, SplitRatio = 0.8)
+train_reg <- subset(mtcars, split == "TRUE")
+test_reg <- subset(mtcars, split == "FALSE")
+
+# Train logistic regression model
+# Predicting engine type (vs) using weight (wt) and displacement (disp)
+logistic_model <- glm(vs ~ wt + disp, data = train_reg, family = "binomial")
+summary(logistic_model)
+
+# Make predictions on test set (THIS WAS MISSING)
+predict_reg <- predict(logistic_model, test_reg, type = "response")
+
+# Convert probabilities to binary predictions (0 or 1)
+predict_reg <- ifelse(predict_reg > 0.5, 1, 0)
+
+# Evaluate model with confusion matrix
+conf_matrix <- table(test_reg$vs, predict_reg)
+print(conf_matrix)
+
+# Calculate accuracy
+accuracy <- mean(predict_reg == test_reg$vs)
+print(paste('Accuracy =', accuracy))
+
+# ROC-AUC analysis
+ROCPred <- prediction(predict(logistic_model, test_reg, type = "response"), test_reg$vs)
+ROCPer <- performance(ROCPred, "tpr", "fpr")
+
+# Calculate AUC
+auc <- performance(ROCPred, "auc")@y.values[[1]]
+
+# Plot ROC curve
+plot(ROCPer, colorize = TRUE, 
+     print.cutoffs.at = seq(0.1, 0.9, by = 0.1),
+     main = "ROC CURVE")
+abline(a = 0, b = 1) # Add diagonal reference line
+legend("bottomright", legend = paste("AUC =", round(auc, 4)), 
+       col = "blue", lty = 1)
+
+
+--------------------------------------------------------------------
+
+Q 3) 
+
+# Load the dataset 
+data(Titanic) 
+# Convert the table to a data frame 
+data <- as.data.frame(Titanic) 
+# Fit the logistic regression model 
+model <- glm(Survived ~ Class + Sex + Age, family = binomial, data = data) 
+# View the summary of the model 
+summary(model)
+
+# Install and load the required packages 
+#install.packages("ROCR") 
+library(ROCR) 
+# Fit the logistic regression model 
+model <- glm(Survived ~ Class + Sex + Age, family = binomial, data = data) 
+# Make predictions on the dataset 
+predictions <- predict(model, type = "response") 
+# Create a prediction object for ROCR 
+prediction_objects <- prediction(predictions, data$Survived) 
+
+# Create an ROC curve object 
+roc_object <- performance(prediction_objects, measure = "tpr", x.measure = "fpr") 
+# Plot the ROC curve 
+plot(roc_object, main = "ROC Curve", col = "blue", lwd = 2) 
+# Add labels and a legend to the plot 
+legend("bottomright", legend =  paste("AUC =", round(performance(prediction_objects, measure = "auc") @y.values[[1]], 2)), col = "blue", lwd = 2) 
