@@ -1,0 +1,143 @@
+// 1. Create database Library
+use Library
+
+// 2. Create collection of books and add 5 documents
+db.createCollection("books")
+
+db.books.insertMany([
+    {
+        ISBNNo: "978-3-16-148410-0",
+        Title: "Introduction to MongoDB",
+        Publisher: "Doubleday",
+        Author: "John Doe",
+        Category: "Database",
+        Price: 1200,
+        Year: 2020
+    },
+    {
+        ISBNNo: "978-1-23-456789-0",
+        Title: "Advanced Database Systems",
+        Publisher: "Tech Publications",
+        Author: "Jane Smith",
+        Category: "Database",
+        Price: 1800,
+        Year: 2021
+    },
+    {
+        ISBNNo: "978-0-12-345678-9",
+        Title: "AI Fundamentals",
+        Publisher: "AI Press",
+        Author: "Alan Turing",
+        Category: "AI",
+        Price: 2500,
+        Year: 2022
+    },
+    {
+        ISBNNo: "978-9-87-654321-0",
+        Title: "Web Development with MongoDB",
+        Publisher: "Doubleday",
+        Author: "Sarah Johnson",
+        Category: "Web",
+        Price: 1500,
+        Year: 2019
+    },
+    {
+        ISBNNo: "978-5-55-123456-7",
+        Title: "Data Science Essentials",
+        Publisher: "Data World",
+        Author: "Mike Brown",
+        Category: "Data Science",
+        Price: 2200,
+        Year: 2023
+    }
+])
+
+// 3. List the Title, ISBN & Author for books
+db.books.find({}, { Title: 1, ISBNNo: 1, Author: 1, _id: 0 })
+
+// 4. List the Books which price is more than 1500
+db.books.find({ Price: { $gt: 1500 } })
+
+// 5. Remove the Book (ISBN 978-3-16-148410-0) from collection
+db.books.deleteOne({ ISBNNo: "978-3-16-148410-0" })
+
+// 6. List the 'Doubleday' publishers books
+db.books.find({ Publisher: "Doubleday" })
+
+// 7. List books belonging to a specific category, e.g., "Database"
+db.books.find({ Category: "Database" })
+
+// 8. Find books written by a specific author, e.g., "John Doe"
+db.books.find({ Author: "John Doe" })
+
+// 9. Update the price of a book based on ISBN
+db.books.updateOne(
+    { ISBNNo: "978-1-23-456789-0" },
+    { $set: { Price: 2000 } }
+)
+
+// 10. Count the number of books in the collection
+db.books.countDocuments()
+
+// 11. Sort books by price in descending order
+db.books.find().sort({ Price: -1 })
+
+// 12. Find the most expensive book
+db.books.find().sort({ Price: -1 }).limit(1)
+
+// 13. Find books that have a price between 1000 and 2000
+db.books.find({ Price: { $gte: 1000, $lte: 2000 } })
+
+// 14. Add a new field "Stock" to all books
+db.books.updateMany({}, { $set: { Stock: 10 } })
+
+// 15. Remove all books from a specific category, e.g., "AI"
+db.books.deleteMany({ Category: "AI" })
+
+// 16. Find books whose title contains a specific keyword, e.g., "MongoDB"
+db.books.find({ Title: { $regex: "MongoDB", $options: "i" } })
+
+// 17. List books published after a certain year (if a year field is added)
+db.books.find({ Year: { $gt: 2020 } })
+
+// 18. Retrieve books that have a price lower than 1000
+db.books.find({ Price: { $lt: 1000 } })
+
+// 19. Find the cheapest book in the collection
+db.books.find().sort({ Price: 1 }).limit(1)
+
+// 20. Update the publisher name for a specific book
+db.books.updateOne(
+    { ISBNNo: "978-9-87-654321-0" },
+    { $set: { Publisher: "New Publisher" } }
+)
+
+// 21. Remove all books with a price above 5000
+db.books.deleteMany({ Price: { $gt: 5000 } })
+
+// 22. Group books by category and count them
+db.books.aggregate([
+    { $group: { _id: "$Category", count: { $sum: 1 } } }
+])
+
+// 23. List distinct publishers available in the collection
+db.books.distinct("Publisher")
+
+// 24. Check if a specific book (by ISBN) exists in the collection
+db.books.find({ ISBNNo: "978-1-23-456789-0" }).count() > 0
+
+// 25. Find books that have a price greater than the average book price
+db.books.aggregate([
+    { $group: { _id: null, avgPrice: { $avg: "$Price" } } },
+    { $project: { _id: 0, avgPrice: 1 } }
+])
+
+// Then use the average price in a find query
+var avgPrice = db.books.aggregate([
+    { $group: { _id: null, avgPrice: { $avg: "$Price" } } }
+]).toArray()[0].avgPrice
+
+db.books.find({ Price: { $gt: avgPrice } })
+
+// 26. Retrieve books that do not belong to a specific category
+db.books.find({ Category: { $ne: "Database" } })
