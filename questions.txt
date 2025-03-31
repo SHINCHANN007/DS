@@ -1,0 +1,225 @@
+PRAC-1  EDA & Data Visualization  
+
+Perform following operations in R   
+
+1. Create Student.csv file with fields(rollno, name, gender, class, 
+Tmarks) (note:- Total marks out of 1000) Read the file in R 
+
+2. Extract first few lines from from dataset   
+
+3. Check the data type of dataset's fields  
+
+4. Get the summary of data set Code:  
+
+5. check the dimensions of dataset and list column names Code: 
+
+6. List the row sets where total marks are more than 750 
+
+7. List only the first 2 columns where total marks are more 
+than 750 and class is SYCS  
+
+8. Sort the data in ascending order of total marks
+
+9. List the records where total marks are not entered. 
+
+10. Plot the scatter plot which shows relation between average 
+marks and study hrs  
+
+-------------------------------------------
+
+PRAC-2  Practical of Hypothesis testing.
+
+Q1) Ten flower stems are chosen at random from a population and their heights are found to be (in cms) 63, 
+63, 66, 67, 68, 69, 70, 70, 71 and 71. Discuss whether the mean height of the population is 66 cms.
+
+Q2) The class test is conducted for the 10 students and their marks are listed below: 50, 49, 52, 44, 45, 48, 
+46, 45, 49, 45 Test if the average marks of the students can be taken to be 50. 
+
+Q3) A random sample of 10 boys had the following IO’s  70, 120, 110, 101, 88, 83, 95, 88, 107, 100 Does 
+this data support the claim that population mean IQ is 100?
+
+Q4) Using the mtcars data set, test the hypothesis the average miles per gallon for care in this data set is 20 
+mpg. 
+
+Q5) Two types of drugs were used on 5 and 7 patients for reducing their weight. Drug A was imported and 
+drug B indigenous. The decrease in the weight after using the drugs for six months was as follows: 
+
+Q6) The sales data of an item in six shops before and after a special promotional campaign are as under:
+
+Q7) Consider the survey data in the MASS library which represents the data from a survey conducted on 
+students. Test the hypothesis whether the students smoking habit is independent of their exercise level at .05 
+significance level. 
+
+Q8) Consider the ‘cyl’ and ‘carb’ variables in ‘mtcars’ dataset and test whether it is dependent or not. 
+Hypothesis: 
+
+Q9) whether the choice of sport is independent of gender or not. So, we asked one hundred men and one 
+hundred women which sport they prefer to play among archery, boxing, and cycling and summarizes the 
+data obtained in the following two-way table. 
+
+Q10) Is being left-handed hereditary? To answer this question, 250 adults are randomly selected and their 
+handedness and their parents’ handedness are noted. The results are summarized in the table provided. Test,
+
+Q11) The data is a contingency table containing 13 housetasks and their distribution in the couple: 
+ rows are the different tasks 
+ values are the frequencies of the tasks done: 
+ by the wife only 
+ alternatively 
+ by the husband only 
+ or jointly 
+Check whether the household tasks are independent of Gender
+
+-------------------------------------------
+
+PRAC-3  Practical Analysis of Variance
+
+Q1. Two random samples were drawn from two normal population and their values are as 
+follows 
+
+Q2. Perform F-test for the give data. 
+time_g1  time_g2  
+Hypotheses: 
+H0 : The variances of the two populations are equal. 
+H1 : The variances of the two populations are not equal. 
+
+Q3. A researcher studied education in the united kingdom and germany wanted to 
+compare how many years of on average women in each country spent in school. 
+The Researched obtained the random sample from both the countries. 
+Test whether the average number of years spent in the school by women in 2 
+countries are equal or not. 
+H0 : The variances of the two populations are equal. 
+H1 : The variances of the two populations are not equal. 
+
+
+Q4. A large company is assessing the difference in ‘satisfaction index’ of employees in finance, 
+marketing & client-servicing dept. Do the variance testing ( ANOVA) for the same. 
+H0: The means of all groups are equal 
+H1: The means of all groups are not equal
+
+Q5. A large company is assessing the difference in ‘satisfaction index’ of employees in finance, 
+marketing & client-servicing dept. Experience Level is also considered as one factor in study. 
+(lt5 - less than 5,gt5 - greater than 5). Do the variance testing ( ANOVA) for the same  
+
+Satindex  Dept  Experience    
+75 FINANCE  lt5  
+55 MARKETING  gt5
+72 CS  lt5
+
+H0: There is no significant difference in the mean satisfaction index across the departments 
+(finance, marketing, client-servicing). 
+H1: At least one department has a significantly different mean satisfaction index. 
+
+
+Q6. In a research it was state that interest in politics was influence by the level of education and 
+gender. Test the hypothesis(ANOVA) for given sample       
+Gender  Education  Political_Int    
+F  School  58
+
+-------------------------------------------
+
+PRAC-4 Practical of Data collection, Data curation and Management for Large-scale Data system  
+
+Practical of Data collection, Data curation and Management for Large-scale Data system  
+Perform the following operations in MongoDB 
+
+1. Create database Library.  
+2. Create collection of books and add 5 documents in it.For book's  ISBNNo, Title, Publisher, 
+Author, Category  & price these details need to be  maintained.  
+3. List the Title, ISBN &Author for books  
+4. List the Books which price is more than 1500.  
+
+5. Remove the Book (ISBN 978-3-16-148410-0) from collection.  
+6. List the 'Doubleday' publishers books. 
+7. List books belonging to a specific category, e.g., "Database". 
+8. Find books written by a specific author, e.g., "John Doe". 
+9. Update the price of a book based on ISBN. 
+
+  
+10. Count the number of books in the collection. 
+11. Sort books by price in descending order. 
+12. Find the most expensive book. 
+13. Find books that have a price between 1000 and 2000. 
+
+14. Add a new field "Stock" to all books. 
+15. Remove all books from a specific category, e.g., "AI". 
+16. Find books whose title contains a specific keyword, e.g., "MongoDB". 
+17. List books published after a certain year (if a year field is added). 
+18. Retrieve books that have a price lower than 1000. 
+19. Find the cheapest book in the collection. 
+20. Update the publisher name for a specific book. 
+ 
+21. Remove all books with a price above 5000. 
+22. Group books by category and count them. 
+23. List distinct publishers available in the collection. 
+24. Check if a specific book (by ISBN) exists in the collection. 
+25. Find books that have a price greater than the average book price. 
+26. Retrieve books that do not belong to a specific category. 
+
+
+-------------------------------------------
+
+PRAC-5 Aim: Simple/Multiple Linear Regression.
+
+Q1) Perform linear regression on the following data to predict weight of the person 
+depending on height. Also predict the weight of person whose height is 140. 
+
+Q2) A sample of 10 homes sold in an area is selected and the following data was 
+gathered, Perform linear regression to predict Selling prize based on home size. Predict 
+the Selling prize for home of size 1500 sq ft.  
+
+Q3) Perform linear regression on the following data which refers to years of service in a 
+factory of seven workers in a specialized field & their monthly income (in thousands of Rs).  
+
+Q4) Perform linear regression on the iris dataset of R for predicting sepal.length on 
+sepal.width. 
+
+Q5) Perform linear regression on the mtcars dataset of R for predicting mpg of a car 
+based on horsepower.  
+
+Q6) Perform linear regression on the given data to estimate the effect of biking and smoking 
+on heart disease.  
+
+Q7) Perform linear regression on the given data to estimate the predict the value of 
+performance index based on writing skills, language skills, technical knowledge and 
+general knowledge. 
+
+
+-------------------------------------------
+
+PRAC-6 Aim: Logistic Regression 
+
+
+-------------------------------------------
+PRAC-7 Aim: Clustering 
+ 
+Q1) K-means Clustering 
+
+Q2) Hierarchical Clustering: Agglomerative Clustering 
+
+Q3) K means clustering in detail
+
+
+-------------------------------------------
+
+PRAC-8 Aim: Principal Component Analysis 
+
+Q1) PCA and Principal Component Regression (PCR) on iris dataset 
+
+Q2) PCA and Principal Component Regression (PCR) on mtcars dataset
+
+Q3) PCA and Principal Component Regression (PCR) on USArrests 
+
+
+-------------------------------------------
+
+PRAC-9  Time Series Forecasting 
+
+
+-------------------------------------------
+PRAC-10 Aim: Decision Tree
+
+Q1) Decision Tree model on iris dataset 
+
+Q2) Decision Tree on mtcars dataset 
+-------------------------------------------
+
