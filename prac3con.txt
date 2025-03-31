@@ -1,0 +1,69 @@
+q1
+
+
+Conclusion: Since the p-value (0.63590.63590.6359) is greater than the significance level 
+(0.050.050.05) and the confidence interval includes 1, we fail to reject the null hypothesis. There 
+is no significant difference in the variances of the two populations.
+
+------------------------
+
+q2
+
+Conclusion: Since the p-value (0.4584) is greater than the significance level (0.05), and the 
+confidence interval includes 1, we fail to reject the null hypothesis. There is no significant 
+difference in the variances of the two groups. 
+
+------------------------
+
+q3
+
+
+Conclusion: Since the p-value is less than the significance level (0.05), and the confidence 
+interval does not includes 1, we reject the null hypothesis. The variances of the number of years 
+spent in school by women in the UK and Germany are significantly different. 
+
+------------------------
+
+q4
+
+Conclusion: Given that the p-value is 0.119, which is greater than the typical significance level 
+of 0.05, we fail to reject the null hypothesis. This means that, based on this data, there is no 
+significant evidence to suggest that the mean values of satisfaction index differ across the 
+different levels of department .Thus, we conclude that the department does not have a significant 
+effect on the variable satisfaction index. 
+------------------------
+
+q5
+
+Conclusion: The two-way ANOVA analysis was conducted to assess the effects of department 
+and experience level, as well as their interaction, on the satisfaction index.  
+Mulund College of Commerce (Autonomous)  
+Data Science 
+Pramod Joshi  
+248637 
+The results revealed that the effect of department was not statistically significant 
+(F=2.051,p=0.184F = 2.051, p = 0.184F=2.051,p=0.184), indicating no substantial differences in 
+the satisfaction index across departments.  
+Similarly, the effect of experience level was not statistically significant (F=1.572,p=0.241F = 
+1.572, p = 0.241F=1.572,p=0.241), suggesting that the experience level (less than 5 years vs. 
+greater than 5 years) does not have a significant impact on the satisfaction index.  
+Furthermore, the interaction effect between department and experience level was also not 
+statistically significant (F=0.781,p=0.487F = 0.781, p = 0.487F=0.781,p=0.487), implying that 
+the relationship between department and satisfaction index does not vary based on experience 
+level.  
+Overall, the findings indicate that none of the factors or their interaction significantly influence 
+the satisfaction index at the 0.05 level of significance. 
+
+------------------------
+
+q6
+
+Conclusion: The two-way ANOVA results indicate that the level of education does not have a 
+statistically significant effect on interest in politics (F=1.018,p=0.4341F = 1.018, p = 0.4341), 
+and the interaction between education level and gender is also not statistically significant 
+(F=0.066,p=0.8038F = 0.066, p = 0.8038).  
+However, gender has a statistically significant effect on interest in politics (F=6.412,p=0.0351F 
+= 6.412, p = 0.0351), suggesting that interest in politics differs significantly between genders.  
+Overall, gender appears to be the only significant factor influencing interest in politics in this 
+study.
+------------------------

@@ -1,0 +1,81 @@
+q1 
+
+Since the p-value is greater than 0.05, we fail to reject the null hypothesis. There is insufficient evidence to 
+suggest a significant difference. 
+
+
+-----------------------------
+
+q2
+
+Since the p-value is less than 0.05, we reject the null hypothesis. There is sufficient evidence to suggest a 
+significant difference. 
+
+-----------------------------
+
+q3
+
+Since the p-value is greater than 0.05, we fail to reject the null hypothesis. There is insufficient evidence to 
+suggest a significant difference. 
+
+
+-----------------------------
+
+q4
+
+Since the p-value is greater than 0.05, we fail to reject the null hypothesis. There is insufficient evidence to 
+suggest a significant difference. 
+
+
+-----------------------------
+
+q5
+
+Since the p-value is greater than 0.05, we fail to reject the null hypothesis. There is insufficient evidence to 
+suggest a significant difference.
+
+
+-----------------------------
+
+q6
+
+Since the p-value is less than 0.05, we reject the null hypothesis. There is sufficient evidence to suggest a 
+significant difference. 
+
+-----------------------------
+
+q7
+
+Since the p-value is greater than 0.05, we fail to reject the null hypothesis. There is insufficient evidence to 
+suggest a significant difference. 
+-----------------------------
+
+q8
+
+Since the p-value is less than 0.05, we reject the null hypothesis. There is sufficient evidence to suggest a 
+significant difference.
+-----------------------------
+
+q9
+
+Output 
+Since the p-value is less than 0.05, we reject the null hypothesis. There is sufficient evidence to suggest a 
+significant difference.
+
+-----------------------------
+
+q10
+
+Since the p-value is less than 0.05, we reject the null hypothesis. There is sufficient evidence to suggest a 
+significant difference.
+-----------------------------
+
+q11
+
+Since the p-value is less than 0.05, we reject the null hypothesis. There is sufficient evidence to suggest a 
+significant difference.
+
+-----------------------------
+
+
+
