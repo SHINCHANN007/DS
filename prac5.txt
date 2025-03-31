@@ -1,0 +1,295 @@
+Q1) Perform linear regression on the following data to predict weight of the person 
+depending on height. Also predict the weight of person whose height is 140.
+
+
+height <- c(151, 174, 138, 186, 128, 136, 179, 163, 152)
+weight <- c(63, 81, 56, 91, 47, 57, 76, 72, 62)
+
+data<-data.frame(height,weight)
+
+model <- lm(weight~height,data)
+summary(model)
+
+new_height<- data.frame(height=140)
+predicted_weight<-predict(model,new_height)
+print(paste("predicted weight for height 140cm : ",round(predicted_weight,2)))
+
+plot(data$height,data$weight,main = "Height vs Weight",
+xlab = "Height(cm)",ylab = "Weight(kgs)",
+pch = 16,col = "blue")
+abline(model,col = "red",lwd=2 )
+
+qqnorm(model$residuals,main = "Q-Q Plot of Residuals")
+qqline(model$residuals,col="red")
+
+plot(fitted(model),residuals(model),main="Residual vs Fitted",xlab = "Fitted Values",ylab = "Residual",pch=16,col="purple")
+abline(h=0,col="grey",lwd=2)
+
+
+
+
+------------------------------------------------------------------------------------
+
+Q2) A sample of 10 homes sold in an area is selected and the following data was 
+gathered, Perform linear regression to predict Selling prize based on home size. Predict 
+the Selling prize for home of size 1500 sq ft.  
+
+
+home_size <- c(1400, 1300, 1200, 950, 900, 1000, 1300, 850, 1100)  
+selling_price <- c(70, 62, 65, 45, 40, 53, 68, 40, 55) 
+data <- data.frame(home_size, selling_price)  
+
+model <- lm(selling_price ~ home_size, data = data)  
+summary(model)  
+
+new_home <- data.frame(home_size = 1500) 
+predicted_price <- predict(model, new_home)  
+ 
+print(paste("Predicted Selling Price for 1500 sq ft home:", round(predicted_price, 2), "lakh Rs.")) 
+
+plot(home_size, selling_price, pch = 16, col = "blue",main = "Home Size vs Selling Price",xlab = "Home Size (sq ft)", ylab = "Selling Price (lakh Rs.)") 
+abline(model, col = "red", lwd = 2)
+
+#Boxplot  
+boxplot(home_size, selling_price, names = c("Home Size", "Selling Price"),main = "Box Plot of Home Size and 
+Selling Price",col = c("lightblue", "lightgreen"), ylab = "Values")  
+
+# Q-Q Plot  
+qqnorm(residuals(model), main = "Q-Q Plot of Residuals") 
+qqline(residuals(model), col = "red", lwd = 2)  
+
+# Residuals vs Fitted 
+plot(fitted(model), residuals(model), 
+     main = "Residuals vs Fitted",
+     xlab = "Fitted Values",
+     ylab = "Residuals",pch = 16,col = "purple") 
+abline(h = 0,col = "grey", lwd = 2) 
+
+------------------------------------------------------------------------------------
+
+Q3) Perform linear regression on the following data which refers to years of service in a 
+factory of seven workers in a specialized field & their monthly income (in thousands of Rs).  
+
+
+yearsofservice<-c(11,7,9,5,8,6,10)
+income<-c(17,15,13,12,16,14,18)
+
+data<-data.frame(yearsofservice,income)
+
+model<-lm(income~yearsofservice,data=data)
+summary(model)
+
+newdata<-data.frame(yearsofservice=10)
+
+predict_income<-predict(model,newdata)
+print(paste("income of new data is :",round(predict_income,2)))
+
+plot(yearsofservice,income,main = "YEARS of Service vs Income",
+     xlab = "Years of Service",ylab = "Income",pch=16,col="blue")
+abline(model,col="green")
+
+boxplot(income,main="BoxPlot of Income",
+        ylab="Income(Rs)",col = "lightblue",horizontal = TRUE)
+
+qqnorm(model$residuals,main="Q-Q Plot od Residuals")
+qqline(model$residuals,col="red")
+
+plot(fitted(model),residuals(model),main="Residual vs Fitted",xlab = "Fitted",ylab = "Residual",col="purple",pch=16)
+abline(h=0,col="blue",lwd=2)
+
+------------------------------------------------------------------------------------
+
+Q4) Perform linear regression on the iris dataset of R for predicting sepal.length on 
+sepal.width.  
+
+
+data("iris")
+
+model <- lm(Sepal.Length~Sepal.Width, data=iris)
+summary(model)
+
+new_data <- data.frame(Sepal.Width = c(4.0))
+predicted_SL <- predict(model,new_data)
+
+print(paste("new sepal length",round(predicted_SL,2)))
+
+
+
+plot(iris$Sepal.Width,iris$Sepal.Length,col="blue",pch=16)
+abline(model,col="red",lwd=2)
+
+plot(fitted(model), residuals(model), main = "Residuals vs Fitted Values",      
+xlab = "Fitted Values", ylab = "Residuals", col = "purple", pch = 16) 
+abline(h = 0, col = "blue", lwd = 2)
+
+qqnorm(model$residuals, main = "Q-Q Plot of Residuals") 
+qqline(model$residuals, col = "red", lwd = 2) 
+
+boxplot(iris$Sepal.Length, iris$Sepal.Width,
+names = c("Sepal Length", "Sepal Width"),main = "Box Plot of Sepal Dimensions", ylab = "Values",col = c("lightblue", "lightgreen")) 
+
+------------------------------------------------------------------------------------
+
+Q5) Perform linear regression on the mtcars dataset of R for predicting mpg of a car 
+based on horsepower. 
+
+data(mtcars)  
+model_mtcars <- lm(mpg ~ hp, data = mtcars)  
+summary(model_mtcars) 
+new_data <- data.frame(hp = c(100, 150, 200))  
+predicted_mpg <- predict(model_mtcars, new_data)  
+print(predicted_mpg)  
+
+plot(mtcars$hp, mtcars$mpg, main = "Horsepower vs MPG", xlab = "Horsepower", ylab =  "MPG", pch = 16, col = "blue") 
+abline(model_mtcars, col = "red") 
+
+
+plot(model_mtcars$fitted.values, model_mtcars$residuals, main = "Residuals vs Fitted  
+Model", xlab = "Fitted Values", ylab = "Residuals", pch = 16, col = "red") 
+abline(h = 0, col = "blue") 
+
+qqnorm(model_mtcars$residuals, main = "QQ Plot of Residuals")  
+qqline(model_mtcars$residuals, col = "red")  
+
+boxplot(mtcars$mpg, mtcars$hp, names = c("MPG", "Horsepower"), 
+        main = "Box Plot of MPG and Horsepower",  ylab = "Values", col = c("lightblue", "lightgreen"))  
+
+------------------------------------------------------------------------------------
+
+Q6) Perform linear regression on the given data to estimate the effect of biking and smoking 
+on heart disease.  
+
+library(ggplot2)
+
+# Load data (interactive file selection)
+heart_data <- read.csv(file.choose(), header = TRUE)  
+head(heart_data)  # Check the first few rows
+
+# Fit a linear model
+model <- lm(heart_disease ~ biking + smoking, data = heart_data)
+summary(model)  # View model summary
+
+# Predict heart disease for new data
+new_data <- data.frame(biking = 50, smoking = 10)  # Example values
+predicted_heart_disease <- predict(model, newdata = new_data)
+
+# Print prediction
+cat("Predicted Heart Disease: ", predicted_heart_disease, "\n")
+
+ggplot(heart_data, aes(x = biking, y = heart_disease)) +
+  geom_point(aes(color = heart_disease), size = 3) +
+  labs(
+    title = "Scatter Plot: Biking vs Heart Disease",
+    x = "Biking",
+    y = "Heart Disease"
+  ) +
+  scale_color_gradient(low = "blue", high = "red") +
+  theme_minimal()
+ggplot(heart_data, aes(x = smoking, y = heart_disease)) +
+  geom_point(aes(color = heart_disease), size = 3) +
+  labs(
+    title = "Scatter Plot: Smoking vs Heart Disease",
+    x = "Smoking",
+    y = "Heart Disease"
+  ) +
+  scale_color_gradient(low = "blue", high = "red") +
+  theme_minimal()
+
+boxplot(
+  heart_data$heart_disease ~ cut(heart_data$biking, breaks = 4),
+  main = "Box Plot: Heart Disease by Biking Levels",
+  xlab = "Biking Levels",
+  ylab = "Heart Disease",
+  col = c("lightblue", "lightgreen", "lightpink", "lightyellow"),
+  names = c("Low", "Medium", "High", "Very High")
+)
+
+boxplot(
+  heart_data$heart_disease ~ cut(heart_data$smoking, breaks = 4),
+  main = "Box Plot: Heart Disease by Smoking Levels",
+  xlab = "Smoking Levels",
+  ylab = "Heart Disease",
+  col = c("lightblue", "lightgreen", "lightpink", "lightyellow"),
+  names = c("Low", "Medium", "High", "Very High")
+)
+
+qqnorm(model$residuals, main = "QQ Plot of Residuals")
+qqline(model$residuals, col = "red")
+
+ggplot(
+  data.frame(Fitted = model$fitted.values, Residuals = model$residuals),
+  aes(x = Fitted, y = Residuals)
+) +
+  geom_point(color = "darkgreen") +
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
+  labs(
+    title = "Residuals vs Fitted Values",
+    x = "Fitted Values",
+    y = "Residuals"
+  ) +
+  theme_minimal()
+
+------------------------------------------------------------------------------------
+
+Q7) Perform linear regression on the given data to estimate the predict the value of 
+performance index based on writing skills, language skills, technical knowledge and 
+general knowledge.  
+
+library(ggplot2)
+
+# Load data (interactive file selection)
+index_data <- read.csv(file.choose(), header = TRUE)
+head(index_data)  # Check the first few rows
+
+# Fit a linear model
+model <- lm(index ~ written + language + tech + gk, data = index_data)
+summary(model)  # View model summary
+
+# Predict performance index for new data
+new_data <- data.frame(written = 48, language = 67, tech = 56, gk = 54)
+predicted_index <- predict(model, newdata = new_data)
+
+# Print prediction
+cat("Predicted Performance Index: ", predicted_index, "\n")
+
+pairs(~index + written + language + tech + gk, 
+      data = index_data, 
+      main = "Pairwise Scatter Plot Matrix")
+
+ggplot(index_data, aes(x = factor(1), y = written)) +
+  geom_boxplot() +
+  labs(title = "Box Plot: Written Skills", y = "Written Skills") +
+  theme_minimal()
+
+ggplot(index_data, aes(x = factor(1), y = language)) +
+  geom_boxplot() +
+  labs(title = "Box Plot: Language Skills", y = "Language Skills") +
+  theme_minimal()
+
+ggplot(index_data, aes(x = factor(1), y = tech)) +
+  geom_boxplot() +
+  labs(title = "Box Plot: Technical Knowledge", y = "Technical Knowledge") +
+  theme_minimal()
+
+ggplot(index_data, aes(x = factor(1), y = gk)) +
+  geom_boxplot() +
+  labs(title = "Box Plot: General Knowledge", y = "General Knowledge") +
+  theme_minimal()
+
+qqnorm(model$residuals, main = "QQ Plot of Residuals")
+qqline(model$residuals, col = "red")
+
+ggplot(
+  data.frame(Fitted = model$fitted.values, Residuals = model$residuals),
+  aes(x = Fitted, y = Residuals)
+) +
+  geom_point() +
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
+  labs(
+    title = "Residuals vs Fitted Values",
+    x = "Fitted Values",
+    y = "Residuals"
+  ) +
+  theme_minimal()
+
+------------------------------------------------------------------------------------
