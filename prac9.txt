@@ -1,0 +1,46 @@
+View(AirPassengers) 
+class(AirPassengers)  # Shows it's a time series object (ts)
+str(AirPassengers)    # Structure of the data
+start(AirPassengers)  # Start date (1949, 1)
+end(AirPassengers)    # End date (1960, 12)
+head(AirPassengers)   # First few observations
+frequency(AirPassengers) # 12 (monthly data)
+summary(AirPassengers) # Statistical summary
+
+plot(AirPassengers) # Basic time series plot
+abline(reg=lm(AirPassengers~time(AirPassengers))) # Adds trend line
+
+cycle(AirPassengers) # Shows the seasonal cycle (month numbers)
+
+# Plot yearly averages to see overall trend
+plot(aggregate(AirPassengers, FUN = mean))
+
+# Boxplot by month to see seasonal patterns
+boxplot(AirPassengers~cycle(AirPassengers))
+
+acf(AirPassengers) # Autocorrelation of raw data
+acf(log(AirPassengers)) # Autocorrelation of log-transformed data
+acf(diff(log(AirPassengers))) # Autocorrelation of differenced log data
+pacf(diff(log(AirPassengers))) # Partial autocorrelation
+plot(diff(log(AirPassengers))) # Plot of differenced log data
+
+# Fit a seasonal ARIMA model (SARIMA)
+fit <- arima(log(AirPassengers), c(0,1,1), seasonal=list(order=c(0,1,1),period=12))
+
+# Make 10-year forecast
+pred <- predict(fit, n.ahead=10*12) 
+pred1 <- round(exp(pred$pred), 0) # Convert from log scale
+
+
+# Plot forecast with original data
+ts.plot(AirPassengers, pred1, log="y", lty=c(1,3))
+
+# Display first year of forecast
+data <- head(pred1, 12) 
+
+
+# Redefine the time series window and refit model
+datawide <- ts(AirPassengers, frequency = 12, start=c(1949,1), end=c(1959,12))
+fit1 <- arima(log(datawide), c(0,1,1), seasonal=list(order=c(0,1,1),period=12))
+pred <- predict(fit1,n.ahead=10*12) 
+pred1 <- exp(pred$pred) # Convert from log scale
